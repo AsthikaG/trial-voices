@@ -45,12 +45,12 @@ python report.py                   # summary
 python report.py duration          # duration-on-drug distribution
 ```
 
-## Extending beyond Reddit
+## Architecture note
 
-`documents` is source-agnostic (keyed by a string id). Add an `scrape_inspire.py`
-(Playwright) or another public-data puller that upserts rows the same way, and
-`extract.py` will pick them up unchanged. Always respect each source's terms of
-service and robots policy.
+`documents` is source-agnostic (keyed by a string id), so additional **official,
+ToS-compliant** data sources can be added behind the same interface and
+`extract.py` will process them unchanged. This repository accesses Reddit solely
+through the official Reddit Data API.
 
 ## Notes
 - Pre-filter (`RELEVANCE_KEYWORDS`) gates docs before spending tokens.
